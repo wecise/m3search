@@ -11,7 +11,7 @@
 
 > The contents of the env are as follows
 ```
-VUE_APP_M3_APP="m3search"                  -- app name
+VUE_APP_M3_APP="m3search"               -- app name
 
 VUE_APP_M3_HOST="47.92.151.165:8080"    -- host
 
