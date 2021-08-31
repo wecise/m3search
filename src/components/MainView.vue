@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import IndexView from './graph/index';
+import IndexView from './search/index';
 
 export default {
   name: 'MainView',
