@@ -8,7 +8,7 @@
             </el-input>
         </el-header>
         <el-main style="overflow: hidden;height: 100%;padding-top:0px;" v-if="search.result && search.result.all.length>0">
-            <div style="width:100%;padding:10px;background:#f2f2f2;">
+            <div style="padding:10px;background:#f2f2f2;">
                 <span>搜索结果：</span>
                 <template v-for="(v,k) in search.result">
                     <el-button type="default" :key="k" 
@@ -18,9 +18,9 @@
                     </el-button>
                 </template>
             </div>
-            <el-container style="height: 100%;">
-                <el-main style="padding:0px 20px 0px 0px;height:100%;overflow:auto;" ref="container">
-                    <el-tabs value="view">
+            <el-container style="height: calc(100% - 20px);">
+                <el-main style="padding:0px 20px 0px 0px;height:100%;overflow:auto;background:#f2f2f2;" ref="container">
+                    <el-tabs value="view" type="border">
                         <el-tab-pane name="view" key="view">
                             <span slot="label">按分类</span>
                             <template v-for="(v,k) in search.result">
@@ -148,6 +148,8 @@ export default {
             }).catch(err=>{
                 this.search.loading = false;
             })
+
+            this.eventHub.$emit("WINDOW-RESIZE-EVENT");
         },
         getQueryVariable(variable){
             var query = window.location.search.substring(1);
