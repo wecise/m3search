@@ -31,11 +31,22 @@ export default {
     }
   },
   created(){
-    setTimeout(()=>{
-      this.global = this.m3.global;
-      this.auth = this.m3.auth;
-    },500)
-      
+    let init = ()=>{
+        let timer = setInterval(()=>{
+          try{
+            this.m3.init();
+            window.global = this.global = this.m3.global;
+            this.auth = this.m3.auth;
+            if(this.m3.auth && this.m3.global){
+              clearTimeout(timer);
+            }
+          }catch(err){
+            console.error(err);
+          }
+        },200);
+    };
+    
+    init();
   }
 }
 </script>
